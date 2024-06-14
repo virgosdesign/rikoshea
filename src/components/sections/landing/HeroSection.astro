@@ -1,0 +1,65 @@
+---
+import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro';
+import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro';
+import heroImage from '@images/cat_overhead.mp4';
+
+const {
+	title,
+	primaryBtn,
+	primaryBtnURL,
+	secondaryBtn,
+	secondaryBtnURL,
+} = Astro.props;
+
+interface Props {
+	title: string;
+	primaryBtn?: string;
+	primaryBtnURL?: string;
+	secondaryBtn?: string;
+	secondaryBtnURL?: string;
+	src?: any;
+	alt?: string;
+}
+---
+
+<section
+	class='mx-auto h-screen max-w-[85rem] px-4 py-14 sm:px-6 items-center content-center lg:px-8 2xl:max-w-full'>
+	<video
+		class='absolute right-0 top-0 -z-10 h-full w-full object-cover brightness-50'
+    playsinline
+    autoplay
+    muted
+		loop>
+		<source
+			src={heroImage}
+			type='video/mp4'
+		/>
+	</video>
+
+	<div>
+		<h1
+			class='block text-balance text-6xl font-bold tracking-tight text-neutral-200 lg:text-8xl lg:leading-tight'>
+			<!-- About Fragment: https://docs.astro.build/en/basics/astro-syntax/#fragments -->
+			<Fragment set:html={title} />
+		</h1>
+
+		<div class='mt-7 grid w-full gap-3 justify-center sm:inline-flex'>
+			{
+				primaryBtn && (
+					<PrimaryCTA
+						title={primaryBtn}
+						url={primaryBtnURL}
+					/>
+				)
+			}
+			{
+				secondaryBtn && (
+					<SecondaryCTA
+						title={secondaryBtn}
+						url={secondaryBtnURL}
+					/>
+				)
+			}
+		</div>
+	</div>
+</section>

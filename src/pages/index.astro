@@ -1,0 +1,151 @@
+---
+// Import the necessary components
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroSection from '@components/sections/landing/HeroSection.astro';
+import HeroSectionAlt from '@components/sections/landing/HeroSectionAlt.astro';
+import ClientsSection from '@components/sections/landing/ClientsSection.astro';
+import FeaturesGeneral from '@components/sections/features/FeaturesGeneral.astro';
+import FeaturesNavs from '@components/sections/features/FeaturesNavs.astro';
+import TestimonialsSection from '@components/sections/testimonials/TestimonialsSection.astro';
+import PricingSection from '@components/sections/pricing/PricingSection.astro';
+import FAQ from '@components/sections/FAQ.astro';
+import AnnouncementBanner from '@components/ui/banners/AnnouncementBanner.astro';
+import heroImage from '@images/hero-image.avif';
+import faqs from '@data/faqs.json';
+import features from '@data/features.json';
+import pricing from '@data/pricing.json';
+import featureImage from '@images/features-image.avif';
+import construction from '@images/construction-image.avif';
+import tools from '@images/automated-tools.avif';
+import dashboard from '@images/dashboard-image.avif';
+
+const avatarSrcs: Array<string> = [
+	'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
+	'https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
+	'https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80',
+	'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80'
+];
+---
+
+<MainLayout>
+	<AnnouncementBanner
+		btnId='dismiss-button'
+		btnTitle='Explore Careers at Rikoshea'
+		url='https://github.com/mearashadowfax/ScrewFast'
+	/>
+
+	<HeroSection
+		title=`Building a better <span
+        class="text-yellow-500 dark:text-yellow-400">foundation</span> since 1999`
+		primaryBtn='Start Exploring'
+		primaryBtnURL='/products'
+		secondaryBtn='Contact Sales Team'
+		secondaryBtnURL='/contact'
+		src={heroImage}
+		alt='Video of construction site with heavy machinery and workers, with Rikoshea tagline overlayed on top of it.'
+	/>
+
+	<ClientsSection
+		title='Trusted by Industry Leaders'
+		subTitle='Experience the reliability chosen by industry giants.'
+	/>
+
+	<FeaturesGeneral
+		title='Who We Are'
+		subTitle='Our core values are honesty, integrity, leadership, communication, accountability and customer satisfaction.'
+		src={featureImage}
+		alt='ScrewFast products in floating boxes'
+		features={features}
+	/>
+
+	<FeaturesNavs
+		title=`At Rikoshea, we have all the right tools and experties to suit your <span class="text-yellow-500 dark:text-yellow-400">fading item</span> needs.`
+		tabs={[
+			{
+				heading: 'Demolition/Site Preparation',
+				content:
+					'Demolition, debris removal and hauling. Excavation and site preparation. Grading and structural backfill. We do it all, we do it right.',
+				svg: 'tools',
+				src: tools,
+				alt: 'Yellow and black heavy equipment on brown grass field',
+				first: true
+			},
+			{
+				heading: 'Athsphalt/Surfacing',
+				content:
+					'Preparation for Surfacing. Asphalt paving, roadway surfacing, striping. Asphalt repair and maintenance, crack sealing and sealcoating.',
+				svg: 'dashboard',
+				src: dashboard,
+				alt: 'A screenshot or graphic representation of the intuitive dashboard',
+				second: true
+			},
+			{
+				heading: 'Soil/Earth',
+				content:
+					'Soil retention, remediation, preparation and compacting (to code and our geo-tech’s specifications) Grading and structural backfill. Constructing pads for custom homes.',
+				svg: 'house',
+				src: construction,
+				alt: 'Gray metal building frame near tower crane during daytime'
+			},
+			{
+				heading: 'Logistics',
+				content:
+					'Trucking and transportation of large equipment and materials. On-site storage and staging. Material handling and delivery.',
+				svg: 'house',
+				src: construction,
+				alt: 'Gray metal building frame near tower crane during daytime'
+			}
+		]}
+	/>
+
+	<TestimonialsSection
+		title='Fast-Track Your Projects'
+		subTitle='At Rikoshea, we combine 25 years of expertise with cutting edge logistics an analytics to ensure a swift start to your project, and execution by deadline. Experience the speed of construction redefined.'
+		;
+		testimonials={[
+			{
+				content:
+					'We have worked with Rikoshea for years on several different projects and have always had a very positive experience and outcome. Rikoshea is the kind of company that when we provide them with a schedule and a job plan, we can count on them to complete the work right the first time.',
+				author: 'Roger Overton',
+				role: 'Chief Operating Officer | Overton Builders, LLC.',
+				avatarSrc:
+					'https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80'
+			}
+		]}
+		statistics={[
+			{
+				count: '70k+',
+				description:
+					'customers equipped — from DIY to major construction firms'
+			},
+			{
+				count: '35%',
+				description:
+					'uptick in project efficiency with ScrewFast tools and services'
+			},
+			{
+				count: '15.3%',
+				description:
+					'reduction in maintenance costs reported by long-term clients'
+			},
+			{
+				count: '2x',
+				description:
+					'quicker assembly using innovative fastening solutions'
+			}
+		]}
+	/>
+
+	<PricingSection pricing={pricing} />
+
+	<FAQ
+		title='Frequently<br />asked questions'
+		faqs={faqs}
+	/>
+
+	<HeroSectionAlt
+		title="Let's Build Together"
+		subTitle='Rikoshea Contracting, Inc. is committed to providing exceptional service and quality workmanship. We are dedicated to building long-term relationships with our clients and partners. Contact us today to discuss your project needs.'
+		url='/contact'
+	/>
+</MainLayout>
