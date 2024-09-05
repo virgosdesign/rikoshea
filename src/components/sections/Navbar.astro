@@ -6,8 +6,10 @@ import NavLink from '@components/ui/links/NavLink.astro';
 import Authentication from './Authentication.astro';
 import enStrings from '@utils/navigation.ts';
 import frStrings from '@utils/fr/navigation.ts';
-import BrandLogo from '@components/BrandLogo.astro';
+import LogoMark from '@/components/LogoMark.astro';
+import IconMark from '@/components/IconMark.astro';
 import LanguagePicker from '@components/ui/LanguagePicker.astro';
+import WordMark from '../WordMark.astro';
 
 // Select the correct translation based on the page's lang prop:
 const strings = Astro.currentLocale === 'fr' ? frStrings : enStrings;
@@ -16,26 +18,30 @@ const homeUrl = Astro.currentLocale === 'fr' ? '/fr' : '/';
 
 <!-- Main header component -->
 <header
+	id='page-header'
 	class='sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start'>
 	<!-- Navigation container -->
 	<nav
-		class='relative mx-2 w-full rounded-[36px] px-4 py-3 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto'
+    id='main-navigation'
+		class='relative mx-2 w-full rounded-[36px] px-4 py-3 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto duration-1000 delay-300'
 		aria-label='Global'>
-		<div class='flex items-center justify-between'>
+		<div id='brand' class='flex items-center justify-between'>
 			<!-- Brand logo -->
 			<a
-				class='flex-none rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none'
+				class='flex items-center gap-x-2 rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none'
 				href={homeUrl}
 				aria-label='Brand'>
-				<BrandLogo class='h-auto w-full' />
+				<IconMark class='size-16 duration-700' />
+				<!-- Icon Mark -->
+				<!-- <WordMark class="h-10 w-auto duration-1000 delay-75" /> -->
 				<!-- <Icon
-					name='logomark'
-					class='size-10'
+					name='icon_mark'
+					class='size-16 duration-700'
 				/> -->
-				<!-- <Icon
-					name='wordmark'
-					class='h-auto'
-				/> -->
+				<Icon
+					name='word_mark'
+					class='h-10 w-auto duration-1000 delay-75'
+				/>
 			</a>
 			<!-- Collapse toggle for smaller screens -->
 			<div class='ml-auto mr-5 md:hidden'>
@@ -244,3 +250,59 @@ const homeUrl = Astro.currentLocale === 'fr' ? '/fr' : '/';
 	is:inline
 	src='/scripts/vendor/preline/overlay/index.js'
 ></script>
+<script>
+	const header = document.querySelector('#page-header') as HTMLElement;
+  const nav = document.querySelector('#main-navigation') as HTMLElement;
+	const page = document.documentElement;
+  const navItems = document.querySelectorAll('[data-nav-item]');
+  const iconMark = document.querySelector('#icon_mark') as HTMLElement;
+  //const wordMark = document.querySelector('#word_mark') as HTMLElement;
+  // const iconMark = document.querySelector('[data-icon="icon_mark"]') as HTMLElement;
+  const wordMark = document.querySelector('[data-icon="word_mark"]') as HTMLElement;
+
+	document.addEventListener('scroll', () => {
+    const insetTop_Offset = 16; // sticky position has top-4 '1rem = 16px'
+		const d = page.clientHeight - page.scrollTop - header.offsetHeight - insetTop_Offset;
+		nav.classList.toggle('visible-header', d < 0);
+    iconMark.classList.toggle('small-icon-mark', d < 0);
+    wordMark.classList.toggle('small-word-mark', d < 0);
+
+    navItems.forEach(item => {
+
+      if ( d < 0 ) item.classList.remove('text-white');
+      else item.classList.add('text-white');
+      item.classList.toggle('visible-nav-item', d < 0);
+      if (item.ariaCurrent === 'page') {
+        item.classList.add('text-yellow-500');
+      }
+    });
+		// console.table({
+		// 	clientHeight: page.clientHeight,
+		// 	scrollTop: page.scrollTop,
+		// 	offsetHeight: header.offsetHeight,
+    //   d: page.clientHeight - page.scrollTop - header.offsetHeight - 16,
+		// });
+	});
+</script>
+
+<style>
+  .visible-header {
+    @apply bg-yellow-50/60 border-yellow-100/40 backdrop-blur-md
+  }
+
+  .visible-nav-item {
+    @apply text-neutral-600 dark:text-neutral-400
+  }
+
+  .invisible-nav-item {
+    @apply text-white dark:text-white
+  }
+
+  .small-icon-mark {
+    @apply size-12
+  }
+
+  .small-word-mark {
+    @apply h-7
+  }
+</style>

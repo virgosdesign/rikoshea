@@ -1,4 +1,5 @@
 import type { APIRoute, ImageMetadata } from "astro";
+
 import { getImage } from "astro:assets";
 import icon from "@images/icon.png";
 import maskableIcon from "@images/icon-maskable.png";
@@ -44,8 +45,8 @@ export const GET: APIRoute = async () => {
   );
 
   const manifest = {
-    short_name: "ScrewFast",
-    name: "ScrewFast",
+    short_name: "Rikoshea",
+    name: "Rikoshea",
     icons,
     display: "minimal-ui",
     id: "/",

@@ -11,7 +11,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: "https://screwfast.uk",
+  site: "https://rikosheacontracting.com",
   image: {
     domains: ["images.unsplash.com"]
   },
@@ -29,7 +29,7 @@ export default defineConfig({
   integrations: [icon(), tailwind(), sitemap({
     i18n: {
       defaultLocale: "en",
-      // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
+      // All urls that don't contain `fr` after `https://rikosheacontracting.com/` will be treated as default locale, i.e. `en`
       locales: {
         en: "en",
         // The `defaultLocale` value must present in `locales` keys
@@ -37,7 +37,7 @@ export default defineConfig({
       }
     }
   }), starlight({
-    title: "ScrewFast Docs",
+    title: "Rikoshea Docs",
     defaultLocale: "root",
     locales: {
       root: {
@@ -105,7 +105,7 @@ export default defineConfig({
       }
     }],
     social: {
-      github: "https://github.com/mearashadowfax/ScrewFast"
+      github: "https://github.com/mearashadowfax/Rikoshea"
     },
     disable404Route: true,
     customCss: ["./src/styles/starlight.css"],
@@ -118,13 +118,13 @@ export default defineConfig({
       tag: "meta",
       attrs: {
         property: "og:image",
-        content: "https://screwfast.uk" + "/social.webp"
+        content: "https://rikosheacontracting.com" + "/social.webp"
       }
     }, {
       tag: "meta",
       attrs: {
         property: "twitter:image",
-        content: "https://screwfast.uk" + "/social.webp"
+        content: "https://rikosheacontracting.com" + "/social.webp"
       }
     }]
   }), compressor({

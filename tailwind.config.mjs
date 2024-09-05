@@ -8,13 +8,15 @@ export default {
   darkMode: "class",
   theme: {
     colors: {
+      brand: "#f8a500",
       transparent: "transparent",
       current: "currentColor",
-      black: "#000000",
-      white: "#ffffff",
+      black: "#1d1d1f",
+      white: "#f5f5f7",
+      hover: "#2D2D2D",
       gray: colors.gray,
       indigo: colors.indigo,
-      neutral: colors.neutral,  // Used mainly for text color
+      neutral: colors.neutral, // Used mainly for text color
       yellow: {
         50: "#fefce8",
         100: "#fef9c3",
