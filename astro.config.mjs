@@ -149,17 +149,10 @@ export default defineConfig({
     }),
     icon(),
   ],
-  output: "server",
+  output: "static",
   experimental: {
     clientPrerender: true,
     directRenderScript: true,
   },
   adapter: netlify(),
-  vite: {
-    resolve: {
-      alias: {
-        "~": path.resolve(__dirname, "./src"),
-      },
-    },
-  },
 });
