@@ -74,7 +74,7 @@ interface Props {
 
 			let container = document.getElementById('test_swap');
 
-			function machineGun(text) {
+			function machineGun(text: any) {
 				let words = text.split(' '),
 					tl = gsap.timeline({
 						delay: 0.6,
@@ -98,14 +98,14 @@ interface Props {
 					console.log('CONTAINER: ', container);
 					//container.innerHTML += `<h3>${word}</h3>`;
 
-					container.innerHTML = '';
-					let element = container.appendChild(
+					container ? container.innerHTML = '' : undefined;
+					let element = container?.appendChild(
 						document.createElement('h3')
 					);
 					console.log('element: ', element);
 
-					element.textContent = word;
-					console.log('BAR: ', container.children);
+					element ? element.textContent = word : undefined;
+					console.log('BAR: ', container?.children);
 					// element = $('<h3>' + word + '</h3>').appendTo(container);
 					duration = Math.max(0.5, word.length * 0.08); //longer words take longer to read, so adjust timing. Minimum of 0.5 seconds.
 					// if (isSentenceEnd) {
