@@ -1,12 +1,12 @@
+import compressor from "astro-compressor";
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
-import tailwind from "@astrojs/tailwind";
-import vercelStatic from "@astrojs/vercel/static";
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
-import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
+import tailwind from "@astrojs/tailwind";
+// import vercelStatic from "@astrojs/vercel/static";
 
-import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -131,10 +131,10 @@ export default defineConfig({
     gzip: false,
     brotli: true
   }), icon()],
-  output: "static",
+  output: "hybrid",
   experimental: {
     clientPrerender: true,
     directRenderScript: true
   },
-  adapter: vercelStatic()
+  adapter: netlify()
 });
