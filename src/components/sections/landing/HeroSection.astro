@@ -1,7 +1,7 @@
 ---
 import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro';
 import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro';
-import heroImage from '@images/cat_overhead.mp4';
+import heroImage from '@images/rikoshea/StoryZ_Video.mp4';
 
 const { title, primaryBtn, primaryBtnURL, secondaryBtn, secondaryBtnURL } =
 	Astro.props;
@@ -20,7 +20,7 @@ interface Props {
 <section
 	class='mx-auto h-screen max-w-[85rem] content-center items-center px-4 py-14 sm:px-6 lg:px-8 2xl:max-w-full'>
 	<video
-		class='absolute right-0 top-0 -z-10 h-full w-full object-cover brightness-50'
+		class='absolute right-0 top-0 -z-10 h-full w-full object-top brightness-90'
 		onloadstart='this.playbackRate = 0.75;'
 		playsinline
 		autoplay

@@ -131,7 +131,7 @@ export default defineConfig({
     gzip: false,
     brotli: true
   }), icon()],
-  output: "hybrid",
+  output: "server",
   experimental: {
     clientPrerender: true,
     directRenderScript: true
